@@ -9,7 +9,4 @@ import java.util.List;
 @Repository
 public interface RentImageRepository extends JpaRepository<RentImage, Long> {
 
-
-    static List<RentImage> findALl() {
-    }
 }
