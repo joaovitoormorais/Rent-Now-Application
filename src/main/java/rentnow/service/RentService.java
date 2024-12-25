@@ -17,8 +17,6 @@ public class RentService {
     @Autowired
     private RentRepository rentRepository;
 
-
-
     public List<Rent> getAllRents() {
         return rentRepository.findAll();
     }
@@ -53,5 +51,3 @@ public class RentService {
   }
 
         }
-
-

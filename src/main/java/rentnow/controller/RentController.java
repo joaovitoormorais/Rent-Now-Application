@@ -1,6 +1,5 @@
 package rentnow.controller;
 
-
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
@@ -21,13 +20,11 @@ import java.util.UUID;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-
 @RestController
 public class RentController {
 
     @Autowired
     private RentService rentService;
-
 
     @PostMapping
     public ResponseEntity<Rent> saveRent(@RequestBody @Validated RentRecordDto rentRecordDto) {
