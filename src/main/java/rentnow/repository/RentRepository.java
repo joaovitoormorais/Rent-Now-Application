@@ -12,5 +12,8 @@ public interface RentRepository extends JpaRepository<Rent, UUID> {
 
     List<Rent> findByDescriptionIgnoreCase();
 
-    
+    List<Rent> findByRentCondominiumBetween(double minPrice, double maxPrice);
+
+    List<Rent> findBySummaryContainingIgnoreCase(String keyword);
+
 }
