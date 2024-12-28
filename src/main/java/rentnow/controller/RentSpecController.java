@@ -1,12 +1,10 @@
 package rentnow.controller;
 
-import org.apache.catalina.LifecycleState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import rentnow.model.RentImage;
 import rentnow.model.RentSpec;
 import rentnow.service.RentSpecService;
 
@@ -32,8 +30,8 @@ public class RentSpecController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Object> getRentImagesById(@PathVariable Long rentSpecId) {
-        Optional<RentSpec> rentSpec = rentSpecService.getRentImagesById(rentSpecId);
+    public ResponseEntity<Object> getRentSpecById(@PathVariable Long rentSpecId) {
+        Optional<RentSpec> rentSpec = rentSpecService.getRentSpecById(rentSpecId);
         if(rentSpec.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Rent Spec not found.");
         }
@@ -50,8 +48,8 @@ public class RentSpecController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteRentImages(@PathVariable Long rentSpecId) {
-        boolean deleted = rentSpecService.deleteRentImages(rentSpecId);
+    public ResponseEntity<String> deleteRentSpec(@PathVariable Long rentSpecId) {
+        boolean deleted = rentSpecService.deleteRentSpec(rentSpecId);
         if(!deleted) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Rent Spec not found");
         }

@@ -12,13 +12,11 @@ import java.util.Optional;
 @Repository
 public interface RentSpecRepository extends JpaRepository<RentSpec, Long> {
 
-   List<RentSpec> findByrentSpecId(long rentSpecId);
+   List<RentSpec> findByRent(Rent rent);
 
-   Optional<RentSpec> findByrent(Rent rent);
+   Optional<RentSpec> findBySpecType(SpecType specType);
 
-   Optional<RentSpec> findByspecId(SpecType specType);
+   Optional<RentSpec> findBySpecValue(String specValue);
 
-   Optional<RentSpec> findByspecValue(String specValue);
-
-   void deleteBySpecId(long rentSpecId);
+   void deleteById(Long rentSpecId);
 }
