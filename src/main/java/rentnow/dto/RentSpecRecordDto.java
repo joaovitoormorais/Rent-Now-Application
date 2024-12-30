@@ -4,7 +4,7 @@ import rentnow.enums.SpecType;
 import rentnow.model.Rent;
 import rentnow.model.RentSpec;
 
-public record RentSpecRecordDto(long rentSpecId, long rentId, SpecType specType, String specvalue) {
+public record RentSpecRecordDto(Long rentSpecId, Long rentId, SpecType specType, String specvalue) {
 
     public static RentSpecRecordDto fromEntity(RentSpec rentSpec) {
         return new RentSpecRecordDto(

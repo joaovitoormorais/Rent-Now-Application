@@ -13,7 +13,7 @@ import java.util.UUID;
 @Repository
 public interface RentRepository extends JpaRepository<Rent, UUID> {
 
-    List<Rent> findByDescriptionIgnoreCase();
+    List<Rent> findByDescriptionIgnoreCase(String description);
 
     List<Rent> findByRentCondominiumBetween(double minPrice, double maxPrice);
 
@@ -24,5 +24,5 @@ public interface RentRepository extends JpaRepository<Rent, UUID> {
     @Query(value = "SELECT * FROM rents WHERE rent_price > :price", nativeQuery = true)
     List<Rent> findByPriceGreatherThan(@Param("price") double price);
 
-    boolean existById(UUID uuid);
+   // boolean existById(UUID uuid);
 }

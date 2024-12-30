@@ -1,5 +1,5 @@
 package rentnow.model;
-import org.springframework.hateoas.RepresentationModel;
+
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -7,7 +7,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "rents")
-public class Rent extends RepresentationModel<Rent> implements  Serializable{
+public class Rent  implements  Serializable{
 
     private static final long serialVersionUID = 1L;
 

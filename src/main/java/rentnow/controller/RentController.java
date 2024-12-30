@@ -2,7 +2,6 @@ package rentnow.controller;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.Link;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -10,17 +9,14 @@ import org.springframework.web.bind.annotation.*;
 import rentnow.dto.RentRecordDto;
 import rentnow.model.Rent;
 import rentnow.repository.RentRepository;
-import org.springframework.hateoas.RepresentationModel;
 import rentnow.service.RentService;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
-
 @RestController
+@RequestMapping("/rents")
 public class RentController {
 
     @Autowired
@@ -37,10 +33,6 @@ public class RentController {
     @GetMapping
     public ResponseEntity<List<Rent>> getAllRents() {
     List<Rent> rentList = rentService.getAllRents();
-    if(!rentList.isEmpty()) {
-        rentList.forEach(rent -> rent.add((Iterable<Link>) linkTo(methodOn(RentController.class).getRentById(rent.getIdproduct()))));
-
-        }
     return ResponseEntity.ok(rentList);
     }
 
