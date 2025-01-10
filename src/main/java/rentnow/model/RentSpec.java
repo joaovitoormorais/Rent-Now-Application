@@ -3,7 +3,7 @@ package rentnow.model;
 import jakarta.persistence.*;
 import rentnow.enums.SpecType;
 
-@Entity
+@Entity //È o registro do banco de dados no Java
 @Table(name = "rent_specs")
 public class RentSpec {
 

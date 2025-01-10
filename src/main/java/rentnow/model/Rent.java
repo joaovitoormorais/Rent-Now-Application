@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Entity
+@Entity //È o registro do banco de dados no Java
 @Table(name = "rents")
 public class Rent  implements  Serializable{
 

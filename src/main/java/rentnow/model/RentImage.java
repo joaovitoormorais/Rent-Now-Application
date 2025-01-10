@@ -2,7 +2,7 @@ package rentnow.model;
 
 import jakarta.persistence.*;
 
-@Entity
+@Entity //È o registro do banco de dados no java
 @Table(name = "rent_images")
 public class RentImage {
 

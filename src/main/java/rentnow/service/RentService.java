@@ -30,16 +30,23 @@ public class RentService {
     }
 
   public Optional<Rent> updateRent(UUID uuid, RentRecordDto rentRecordDto) {
-        return rentRepository.findById(uuid).map(existingRent -> {
-        existingRent.setDescription(rentRecordDto.description());
-        existingRent.setSummary(rentRecordDto.summary());
-        existingRent.setRentCondominium(rentRecordDto.rentCondominium());
-        existingRent.setRentFess(rentRecordDto.rentFess());
-        existingRent.setCreateAt(rentRecordDto.createAt());
 
-        return rentRepository.save(existingRent);
+        Optional<Rent> optionalRent = rentRepository.findById(uuid);
 
-        });
+       if(optionalRent.isPresent()) {
+           Rent existingRent = optionalRent.get();
+           existingRent.setRentFess(rentRecordDto.rentFess());
+           existingRent.setRentCondominium(rentRecordDto.rentCondominium());
+           existingRent.setSummary(rentRecordDto.summary());
+           existingRent.setDescription(rentRecordDto.description());
+           existingRent.setCreateAt(rentRecordDto.createAt());
+
+           Rent updateRent = rentRepository.save(existingRent);
+
+           return Optional.of(updateRent);
+        }
+
+       return Optional.empty();
   }
 
   public boolean deleteRent(UUID uuid) {
