@@ -28,13 +28,15 @@ public class RentController {
         BeanUtils.copyProperties(rentRecordDto, rent);
         Rent saveRent = rentService.saveRent(rent);
         return ResponseEntity.status(HttpStatus.CREATED).body(saveRent);
-    }
+    } //esse método vai salvar o Rent na base de dados
+      //Os métodos RentRecordDto rentRecordDto são recebidos como corpo e valor por objetos java
+     //validodo pelo @Validated e pelo corpo como @RequestBody
 
     @GetMapping
     public ResponseEntity<List<Rent>> getAllRents() {
     List<Rent> rentList = rentService.getAllRents();
     return ResponseEntity.ok(rentList);
-    }
+    } //esse método vai retornar uma lista que nesse caso é rentList.
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> getRentById(@PathVariable(value = "id") UUID uuid) {
@@ -42,7 +44,8 @@ public class RentController {
         if(rent.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Rent not found.");
 
-        }
+        } //vai salvar o método Rent pelo Id dele que nesse caso é o uuid
+          //caso ele não seja encontrado vai ser mostrado a mensagem Rent not found.
 
         return ResponseEntity.ok(rent.get());
     }
@@ -52,7 +55,12 @@ public class RentController {
         Optional<Rent> updateRent = rentService.updateRent(uuid, rentRecordDto);
         if(updateRent.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Rent not found");
+            //é um tipo de mensagem de excessão se caso
+            //a classe Rent não seja encontrada.
 
+    //vai atualizar o método Rent na sua base de dados pelo uuid
+    //Os métodos RentRecordDto rentRecordDto são recebidos como corpo e valor por objetos java
+    //validodo pelo @Validated e pelo corpo como @RequestBody
         }
 
         return ResponseEntity.ok(updateRent.get());
@@ -62,8 +70,11 @@ public class RentController {
     public ResponseEntity<String> deleteRent(@PathVariable(value = "id") UUID uuid) {
         boolean deleted = rentService.deleteRent(uuid);
         if(!deleted) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Rent not found!");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Rent not found!"); //caso o
+            //Rent nõ seja encontrado.
+            //o método Rent vai ser deletado através do uuid
         }
-        return ResponseEntity.ok("Rent deleted succesfully");
+        return ResponseEntity.ok("Rent deleted succesfully"); //vai retornar assim caso o
+        //Rent nõo for deletado
     }
     }

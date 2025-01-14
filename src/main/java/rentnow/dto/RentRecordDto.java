@@ -16,4 +16,5 @@ public record RentRecordDto(Long id, String description, String summary,
         }
     }
 
-}
+}  //A classe Record já traz os métodos getters, construtores, to String, hashcode, são imutáveis
+    // por isso não possuem os métodos setters, apenas os getters e são privates do tipo final.

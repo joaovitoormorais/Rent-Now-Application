@@ -25,4 +25,5 @@ public record RentSpecRecordDto(Long rentSpecId, Long rentId, SpecType specType,
         rentSpec.setSpecValue(this.specvalue);
         return rentSpec;
     }
-}
+}    //A classe Record já traz os métodos getters, construtores, to String, hashcode, são imutáveis
+    // por isso não possuem os métodos setters, apenas os getters e são privates do tipo final.

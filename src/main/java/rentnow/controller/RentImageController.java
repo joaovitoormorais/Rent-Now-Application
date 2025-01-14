@@ -23,12 +23,14 @@ public class RentImageController {
     public ResponseEntity<RentImage> saveRentImage(@RequestBody @Validated RentImage rentImage) {
         RentImage savedRentImage = rentImageService.saveRentImage(rentImage);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedRentImage);
+        //vai salvar o RentImage na sua base de dados!
     }
 
     @GetMapping
     public ResponseEntity<List<RentImage>> getAllRentImages() {
         List<RentImage> rentImageList = rentImageService.getAllRentImages();
         return ResponseEntity.ok().body(rentImageList);
+        //vai ser retornado uma lista especificada como rentImageList!
     }
 
     @GetMapping("/{id}")
@@ -38,7 +40,7 @@ public class RentImageController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Rent Images not found.");
         }
             return ResponseEntity.ok(rentImage.get());
-    }
+    } //vai salvar o RentImages pelo seu ID
 
     @PutMapping("/{id}")
     public ResponseEntity<Object> updateRentImages(@PathVariable Long id, @RequestBody RentImage rentImage) {
@@ -46,7 +48,8 @@ public class RentImageController {
         if(updateRentImage.isEmpty()) {
             return ResponseEntity.ok(updateRentImage.get());
         }
-        return ResponseEntity.ok(updateRentImage.get());
+        return ResponseEntity.ok(updateRentImage.get()); //vai ser atualizado as imagens pelo id
+        // salvo na base de dados como rentImage.
     }
 
     @DeleteMapping("/{id}")
@@ -56,5 +59,5 @@ public class RentImageController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Rent Images not found.");
         }
             return ResponseEntity.ok("Rent Images not found");
-    }
+    } //vai deletar o RentImages pelo seu id
 }
